@@ -1,13 +1,37 @@
+require 'optparse'
+
 module RubySearcher
   class CLI
     def self.run
       cli = new
-      cli.load_environment
-      Search.new.grep(ARGV.first)
+      #cli.load_environment
+      Search.new.grep(cli.options[:q])
     end
 
-    def initialize(args=ARGV)
-      opts = parse_options(args)
+    attr_reader :options
+
+    def initialize
+      @options = parse_options
+    end
+
+    def parse_options(args=ARGV)
+      options = {}
+      opt_parser = OptionParser.new do |opts|
+        opts.banner = 'Usage: rs some_method [options]'
+        opts.on '-v', '--[no-]verbose', 'verbose output' do |v|
+          options[:verbose] = v
+        end
+        opts.on '-c', '--[no-]colorize', 'colored output' do |v|
+          options[:colorize] = v
+        end
+      end
+      opt_parser.parse!(args)
+      if args.empty?
+        puts opt_parser.help
+        exit
+      end
+      options[:q] = Regexp.new(args.first)
+      options
     end
 
     def working_dir
