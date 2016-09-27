@@ -4,7 +4,7 @@ module RubySearcher
   class CLI
     def self.run
       cli = new
-      #cli.load_environment
+      cli.load_environment
       Search.new.grep(cli.options[:q])
     end
 
@@ -40,7 +40,7 @@ module RubySearcher
 
     def bundler_groups
       groups = [:default]
-      groups << ENV['RACK_ENV'] || ENV['RAILS_ENV'] || 'development'
+      groups << (ENV['RACK_ENV'] || ENV['RAILS_ENV'] || 'development').to_sym
     end
 
     def load_environment
