@@ -9,15 +9,14 @@ module RubySearcher
         .select {|f| File.exist?(f) }
         .map {|f| [f, File.read(f)] }
         .reject {|x| x[1].to_s.empty? }
-        .each do |file, stream|
+        .map do |file, stream|
           matches = stream
             .each_line
-            .with_index
-            .select { |line, _| line =~ regex }
-          Formatter.new(
-            file,
-            matches
-          ).print
+            .map { |line| regex.match(line) }
+            .reject(&:nil?)
+            .each.with_index(1)
+            .to_a
+          [file, matches]
         end
     end
   end

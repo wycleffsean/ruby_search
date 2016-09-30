@@ -1,11 +1,15 @@
 require 'optparse'
+require "ruby_searcher/formatter"
 
 module RubySearcher
   class CLI
     def self.run
       cli = new
       cli.load_environment
-      Search.new.grep(cli.options[:q])
+      results = Search.new.grep(cli.options[:q])
+      results.each do |file, matches|
+        Formatter.new(file, matches, cli.options).print
+      end
     end
 
     attr_reader :options
@@ -18,6 +22,9 @@ module RubySearcher
       options = {}
       opt_parser = OptionParser.new do |opts|
         opts.banner = 'Usage: rs some_method [options]'
+        opts.on '-e', '--escape', 'search literal string' do |e|
+          options[:escape] = e
+        end
         opts.on '-v', '--[no-]verbose', 'verbose output' do |v|
           options[:verbose] = v
         end
@@ -30,7 +37,11 @@ module RubySearcher
         puts opt_parser.help
         exit
       end
-      options[:q] = Regexp.new(args.first)
+      if options[:escape]
+        options[:q] = Regexp.new(Regexp.escape(args.first))
+      else
+        options[:q] = Regexp.new(args.first)
+      end
       options
     end
 
