@@ -1,6 +1,6 @@
 require 'colorize'
 
-module RubySearcher
+module RubySearch
   class Formatter < Struct.new(:file, :matches, :options)
     def to_str
       string = ''

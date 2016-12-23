@@ -1,8 +1,8 @@
 require 'test_helper'
 
-class PryRubySearcherTest < Minitest::Test
+class PrySearchTest < Minitest::Test
   def test_that_it_has_a_version_number
-    refute_nil ::PryRubySearcher::VERSION
+    refute_nil ::PrySearch::VERSION
   end
 
   def test_it_does_something_useful

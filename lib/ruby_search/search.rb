@@ -1,6 +1,6 @@
-require "ruby_searcher/formatter"
+require "ruby_search/formatter"
 
-module RubySearcher
+module RubySearch
   class Search
     def grep(regex)
       $LOADED_FEATURES

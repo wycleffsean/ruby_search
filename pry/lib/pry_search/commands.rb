@@ -1,4 +1,4 @@
-module RubySearcher::Pry
+module RubySearch::Pry
   Commands = Pry::CommandSet.new
 end
 
@@ -8,4 +8,4 @@ Dir[command_glob].each do |command|
   require command
 end
 
-Pry.commands.import RubySearcher::Pry::Commands 
+Pry.commands.import RubySearch::Pry::Commands 

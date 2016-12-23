@@ -1,4 +1,4 @@
 $LOAD_PATH.unshift File.expand_path('../../lib', __FILE__)
-require 'pry_ruby_searcher'
+require 'pry_search'
 
 require 'minitest/autorun'
