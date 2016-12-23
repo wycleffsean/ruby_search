@@ -4,14 +4,14 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require 'pry_ruby_searcher/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = "pry-ruby-searcher"
+  spec.name          = "pry-ruby_searcher"
   spec.version       = PryRubySearcher::VERSION
   spec.authors       = ["Sean Carey"]
   spec.email         = ["wycleffsean@gmail.com"]
 
-  spec.summary       = %q{TODO: Write a short summary, because Rubygems requires one.}
-  spec.description   = %q{TODO: Write a longer description or delete this line.}
-  spec.homepage      = "TODO: Put your gem's website or public repo URL here."
+  spec.summary       = %q{Pry plugin for ruby_searcher}
+  spec.description   = %q{Search all loaded ruby source code}
+  spec.homepage      = "http://example.com"
   spec.license       = "MIT"
 
   # Prevent pushing this gem to RubyGems.org. To allow pushes either set the 'allowed_push_host'

@@ -2,7 +2,7 @@ require 'colorize'
 
 module RubySearcher
   class Formatter < Struct.new(:file, :matches, :options)
-    def print
+    def to_str
       string = ''
       string << "====#{file}\n".colorize(:cyan)
       matches.each do |match, i|
@@ -15,7 +15,17 @@ module RubySearcher
         ].join.chomp
         string << "\n"
       end
-      puts string if !matches.empty? || options[:verbose]
+      string
+    end
+
+    def print
+      if !matches.empty? || options[:verbose]
+        if block_given?
+          yield to_str
+        else
+          puts to_str
+        end
+      end
     end
   end
 end
