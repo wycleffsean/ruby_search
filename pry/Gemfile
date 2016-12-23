@@ -1,6 +1,5 @@
 source 'https://rubygems.org'
 
-# Specify your gem's dependencies in pry_ruby_searcher.gemspec
 gemspec
 
-gem 'ruby_searcher', path: '..'
+gem 'ruby_search', path: '..'

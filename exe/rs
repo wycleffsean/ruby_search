@@ -1,6 +1,6 @@
 #!/usr/bin/env ruby
 
 require 'bundler/setup'
-require "ruby_searcher"
+require "ruby_search"
 
-RubySearcher::CLI.run
+RubySearch::CLI.run

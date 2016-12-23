@@ -1,7 +1,7 @@
 require 'optparse'
-require "ruby_searcher/formatter"
+require "ruby_search/formatter"
 
-module RubySearcher
+module RubySearch
   class CLI
     def self.run
       cli = new

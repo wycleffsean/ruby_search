@@ -1,14 +1,14 @@
-module RubySearcher::Pry
+module RubySearch::Pry
   class Search < Pry::ClassCommand
     match 'search'
-    group 'ruby-searcher'
+    group 'ruby-search'
     description ''
 
     def process
       regexp = Regexp.new(arg_string)
-      results = ::RubySearcher::Search.new.grep(regexp)
+      results = ::RubySearch::Search.new.grep(regexp)
       results.each do |file, matches|
-        ::RubySearcher::Formatter.new(file, matches, opts).print do |message|
+        ::RubySearch::Formatter.new(file, matches, opts).print do |message|
           output.puts message
         end
       end
