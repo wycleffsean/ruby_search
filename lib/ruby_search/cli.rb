@@ -21,7 +21,7 @@ module RubySearch
     def parse_options(args=ARGV)
       options = {}
       opt_parser = OptionParser.new do |opts|
-        opts.banner = 'Usage: rs some_method [options]'
+        opts.banner = 'Usage: ruby-search some_method [options]'
         opts.on '-e', '--escape', 'search literal string' do |e|
           options[:escape] = e
         end
